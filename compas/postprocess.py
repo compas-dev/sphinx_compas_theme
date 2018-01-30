@@ -2,7 +2,16 @@ import os
 from bs4 import BeautifulSoup
 
 # for path, dirs, files in os.walk('../docs'):
-for path, dirs, files in os.walk('/Users/vanmelet/Sites/compas-dev.github.io/main'):
+for path, dirs, files in os.walk('/Users/vanmelet/Code/compas-dev/compas_fea/docs'):
+
+    parts = path.split('/')
+
+    if '_source' in path:
+        continue
+
+    if '.source' in path:
+        continue
+
     for f in files:
         basename, ext = os.path.splitext(f)
         # print basename, ext
