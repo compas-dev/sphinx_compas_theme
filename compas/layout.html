@@ -63,6 +63,8 @@
         <div class="container-fluid compas-container">
             <div class="row flex-xl-nowrap">
 
+                <!-- main content -->
+
                 <main class="col-12 col-md-9 col-xl-8 compas-content" role="main">
 
                     {% block content %}
@@ -89,6 +91,10 @@
                     {% endblock %}
 
                 </main>
+
+                <!-- site navigation sidebar -->
+
+                {% if theme_navbar_active in ('main', 'packages')  %}
 
                 <div class="col-12 col-md-3 col-xl-2 compas-sidebar" role="navigation"> 
                     <div class="navbar-light">
@@ -136,7 +142,13 @@
 
                     </div>
                 </div>
+
+                {% endif %}
+
+                <!-- table of contents of main content -->
                 
+                {% if theme_navbar_active in ('main', 'packages')  %}
+
                 <div class="d-none d-xl-block col-xl-2 compas-toc" role="toc">
 
                     {% set toc = toc
@@ -150,6 +162,9 @@
                     {{ toc }}
 
                 </div>
+
+                {% endif %}
+
             </div>
         </div>
 
@@ -179,7 +194,7 @@ var DOCUMENTATION_OPTIONS = {
     VERSION           : '{{ release|e }}',
     COLLAPSE_INDEX    : false,
     FILE_SUFFIX       : '{{ '' if no_search_suffix else file_suffix }}',
-    HAS_SOURCE        : {{ has_source|lower }},
+    HAS_SOURCE        : '{{ has_source|lower }}',
     SOURCELINK_SUFFIX : '{{ sourcelink_suffix }}'
 };
             </script>
