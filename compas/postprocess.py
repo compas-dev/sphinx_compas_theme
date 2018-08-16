@@ -67,13 +67,13 @@ for path, dirs, files in os.walk('/Users/vanmelet/Code/compas-dev/compas_fea/doc
                 #     href = a.attrs['href']
                 #     a.attrs['href'] = href.replace("_downloads", "downloads").replace("_modules", "modules")
 
-                # modify matplotlib figures
-                for img in soup.select('.figure-plot img'):
-                    img.attrs['class'] = ['figure-img', 'img-fluid']
-                for p in soup.select('.figure-plot p'):
-                    p.decompose()
-                for div in soup.select('.figure-plot div.figure'):
-                    div.unwrap()
+                # # modify matplotlib figures
+                # for img in soup.select('.figure-plot img'):
+                #     img.attrs['class'] = ['figure-img', 'img-fluid']
+                # for p in soup.select('.figure-plot p'):
+                #     p.decompose()
+                # for div in soup.select('.figure-plot div.figure'):
+                #     div.unwrap()
 
                 # figures in general
                 for img in soup.select('.figure img'):
