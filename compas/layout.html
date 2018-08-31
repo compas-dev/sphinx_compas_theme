@@ -9,12 +9,10 @@
         {% endif %}
     </nav>
 {% endmacro %}
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>compas -- additonal packages</title>
+        <title>COMPAS</title>
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -69,8 +67,6 @@
 
                     {% block content %}
 
-                        <!-- {{ breadcrumb() }} -->
-
                         {% set body = body
                             | replace("<pre>", "<pre><code class=\"language-python border rounded\">")
                             | replace("</pre>", "</code></pre>")
@@ -78,16 +74,6 @@
 
                         {{ body }}
                         
-                        <!-- <nav class="compas-sideways">
-                            {% if prev %}
-                                <a href="{{ prev.link|e }}" class="btn btn-primary compas-prev" role="button">{{ prev.title|striptags|e }}</a>
-                            {% endif %}
-
-                            {% if next %}
-                                <a href="{{ next.link|e }}" class="btn btn-primary compas-next" role="button">{{ next.title|striptags|e }}</a>
-                            {% endif %}
-                        </nav> -->
-
                     {% endblock %}
 
                 </main>
