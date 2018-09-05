@@ -6,15 +6,16 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     
-        <meta name="author" content="Tom Van Mele" />
-        <meta name="description" content="compas is a computational framework for research in architecture and structures." />
+        <meta name="author" content="{{ theme_package_author }}" />
+        <meta name="description" content="{{ theme_package_description }}" />
 
-        <link rel="shortcut icon" href="{{ pathto('/_static/images/compas.ico', 1) }}" type="image/x-icon">
+        <link rel="shortcut icon" href="{{ pathto('_static/images/compas.ico', 1) }}" type="image/x-icon">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" />
-        <link rel="stylesheet" type="text/css" href="{{ pathto('/_static/css/github.css', 1) }}" />
-        <link rel="stylesheet" type="text/css" href="{{ pathto('/_static/css/compas.css', 1) }}" />
-        <link rel="stylesheet" type="text/css" href="{{ pathto('/_static/css/compas-reference.css', 1) }}" />
+
+        <link rel="stylesheet" type="text/css" href="{{ pathto('_static/css/prism.css', 1) }}" />
+        <link rel="stylesheet" type="text/css" href="{{ pathto('_static/css/compas.css', 1) }}" />
+        <link rel="stylesheet" type="text/css" href="{{ pathto('_static/css/compas-reference.css', 1) }}" />
 
         {% if next %}
             <link rel="next" title="{{ next.title|striptags|e }}" href="{{ next.link|e }}" />
@@ -55,8 +56,18 @@
                     {% block content %}
 
                         {% set body = body
-                            | replace("<pre>", "<pre><code class=\"language-python border rounded\">")
-                            | replace("</pre>", "</code></pre>")
+                            | replace('<div class="highlight"><pre>', '<div class="highlight"><pre><code>')
+                            | replace('</pre></div>', '</code></pre></div>')
+                            | replace('<div class="highlight-default notranslate">', '<div class="language-none notranslate">')
+                            | replace('<div class="highlight-python notranslate">', '<div class="language-python notranslate">')
+                            | replace('<div class="highlight-shell notranslate">', '<div class="language-bash notranslate">')
+                            | replace('<div class="highlight-console notranslate">', '<div class="language-bash notranslate">')
+                            | replace('<div class="highlight-c notranslate">', '<div class="language-c notranslate">')
+                            | replace('<div class="highlight-cpp notranslate">', '<div class="language-cpp notranslate">')
+                            | replace('<div class="highlight-fortran notranslate">', '<div class="language-fortran notranslate">')
+                            | replace('<div class="highlight-rest notranslate">', '<div class="language-rest notranslate">')
+                            | replace('<div class="highlight-markdown notranslate">', '<div class="language-markdown notranslate">')
+                            | replace('<div class="code ipython3 highlight-default notranslate">', '<div class="language-python notranslate">')
                         %}
 
                         {{ body }}
@@ -169,17 +180,51 @@ var DOCUMENTATION_OPTIONS = {
 
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
             
-            <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.0.0/anchor.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
 
-            <script src="{{ pathto('/_static/underscore.js', 1) }}"></script>
-            <script src="{{ pathto('/_static/doctools.js', 1) }}"></script>
-            <script src="{{ pathto('/_static/js/searchtools_.js', 1) }}"></script>
+            <script src="{{ pathto('_static/underscore.js', 1) }}"></script>
+            <script src="{{ pathto('_static/doctools.js', 1) }}"></script>
+            <script src="{{ pathto('_static/js/searchtools_.js', 1) }}"></script>
+            <script src="{{ pathto('_static/js/prism.js', 1) }}" data-manual></script>
 
             <script>
-hljs.initHighlightingOnLoad();
-anchors.add();
+$(document).ready(function() {
+
+    $(".language-default pre").each(function(i, element) {
+        Prism.highlightElement(element);
+    });
+
+    $(".language-bash pre").each(function(i, element) {
+        Prism.highlightElement(element);
+    });
+
+    $(".language-python pre").each(function(i, element) {
+        Prism.highlightElement(element);
+    });
+
+    $(".language-c pre").each(function(i, element) {
+        Prism.highlightElement(element);
+    });
+
+    $(".language-cpp pre").each(function(i, element) {
+        Prism.highlightElement(element);
+    });
+
+    $(".language-fortran pre").each(function(i, element) {
+        Prism.highlightElement(element);
+    });
+
+    $(".language-markdown pre").each(function(i, element) {
+        Prism.highlightElement(element);
+    });
+
+    $(".language-rest pre").each(function(i, element) {
+        Prism.highlightElement(element);
+    });
+
+    anchors.add();
+});
             </script>
 
         {% endblock %}

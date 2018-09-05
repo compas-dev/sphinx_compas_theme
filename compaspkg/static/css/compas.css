@@ -362,15 +362,20 @@ ol ol, ol ul, ul ol, ul ul {
 	margin-bottom: 2rem;
 }
 
-.compas-content .highlight {
+.highlight {
 	margin-top: 2rem;
 	margin-bottom: 2rem;
+	font-size: 0.9rem;
+
+	/*position: relative;*/
 }
 
-.compas-content .highlight .hljs {
+.highlight pre {
 	padding: 2rem;
-	font-size: 0.8rem;
-	/*font-family: monospace;*/
+}
+
+.language-none pre {
+	background-color: #eee;
 }
 
 .compas-content .anchorjs-link {
