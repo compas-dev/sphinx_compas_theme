@@ -399,6 +399,10 @@ ol ol, ol ul, ul ol, ul ul {
 	color: #eeeeee;
 }*/
 
+.language-none pre {
+	background-color: #eee;
+}
+
 .compas-content .anchorjs-link {
 	text-decoration: none;
 }
