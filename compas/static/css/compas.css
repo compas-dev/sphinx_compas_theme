@@ -374,14 +374,14 @@ ol ol, ol ul, ul ol, ul ul {
 	top: 4px;
 	right: 4px;
 	padding: 2px 4px 4px 4px;
-	line-height: 12px;
+	line-height: 1rem;
 
 	background: transparent;
 	border: none;
 }
 
 .fa-copy {
-	font-size: 16px;
+	font-size: 1rem;
 	color: #666666;
 }
 
