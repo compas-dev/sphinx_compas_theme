@@ -9,12 +9,12 @@
         <meta name="author" content="Tom Van Mele" />
         <meta name="description" content="compas is a computational framework for research in architecture and structures." />
 
-        <link rel="shortcut icon" href="/_static/images/compas.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="{{ pathto('/_static/images/compas.ico', 1) }}" type="image/x-icon">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" />
-        <link rel="stylesheet" type="text/css" href="/_static/css/github.css" />
-        <link rel="stylesheet" type="text/css" href="/_static/css/compas.css" />
-        <link rel="stylesheet" type="text/css" href="/{{ theme_package_name }}/_static/css/compas-reference.css" />
+        <link rel="stylesheet" type="text/css" href="{{ pathto('/_static/css/github.css', 1) }}" />
+        <link rel="stylesheet" type="text/css" href="{{ pathto('/_static/css/compas.css', 1) }}" />
+        <link rel="stylesheet" type="text/css" href="{{ pathto('/_static/css/compas-reference.css', 1) }}" />
 
         {% if next %}
             <link rel="next" title="{{ next.title|striptags|e }}" href="{{ next.link|e }}" />
@@ -31,15 +31,15 @@
 
         <header class="navbar navbar-expand compas-navbar justify-content-between">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/{{ theme_package_name }}">
+                <a class="navbar-brand" href="{{ pathto(master_doc) }}">
                     {{ theme_package_title }} {{ theme_package_version }}
                 </a>
             </div>
 
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">
-                        <img src="/_static/images/compas_icon.png" width="36px" height="36px" alt="compas" />
+                    <a class="nav-link" href="https://compas-dev.github.io">
+                        <img src="{{ pathto('/_static/images/compas_icon.png', 1) }}" width="36px" height="36px" alt="compas" />
                     </a>
                 </li>
             </ul>
@@ -173,9 +173,9 @@ var DOCUMENTATION_OPTIONS = {
             <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.0.0/anchor.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
 
-            <script src="/_static/underscore.js"></script>
-            <script src="/_static/doctools.js"></script>
-            <script src="/_static/js/searchtools_.js"></script>
+            <script src="{{ pathto('/_static/underscore.js', 1) }}"></script>
+            <script src="{{ pathto('/_static/doctools.js', 1) }}"></script>
+            <script src="{{ pathto('/_static/js/searchtools_.js', 1) }}"></script>
 
             <script>
 hljs.initHighlightingOnLoad();
