@@ -40,7 +40,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="https://compas-dev.github.io">
-                        <img src="{{ pathto('_static/images/compas_icon.png', 1) }}" width="36px" height="36px" alt="compas" />
+                        <img src="{{ pathto('_static/images/compas_icon_white.png', 1) }}" width="36px" height="36px" alt="compas" />
                     </a>
                 </li>
             </ul>
@@ -58,6 +58,7 @@
                         {% set body = body
                             | replace('<div class="highlight"><pre>', '<div class="highlight"><pre><code>')
                             | replace('</pre></div>', '</code></pre></div>')
+
                             | replace('<div class="highlight-default notranslate">', '<div class="language-none notranslate">')
                             | replace('<div class="highlight-python notranslate">', '<div class="language-python notranslate">')
                             | replace('<div class="highlight-bash notranslate">', '<div class="language-bash notranslate">')
@@ -68,7 +69,11 @@
                             | replace('<div class="highlight-fortran notranslate">', '<div class="language-fortran notranslate">')
                             | replace('<div class="highlight-rest notranslate">', '<div class="language-rest notranslate">')
                             | replace('<div class="highlight-markdown notranslate">', '<div class="language-markdown notranslate">')
+                            | replace('<div class="highlight-latex notranslate">', '<div class="language-latex notranslate">')
+                            | replace('<div class="highlight-bib notranslate">', '<div class="language-bib notranslate">')
                             | replace('<div class="code ipython3 highlight-default notranslate">', '<div class="language-python notranslate">')
+
+                            | replace('<div class="language-none notranslate">', '<div class="nohighlight notranslate">')
                         %}
 
                         {{ body }}
@@ -187,42 +192,42 @@ var DOCUMENTATION_OPTIONS = {
             <script src="{{ pathto('_static/underscore.js', 1) }}"></script>
             <script src="{{ pathto('_static/doctools.js', 1) }}"></script>
             <script src="{{ pathto('_static/js/searchtools_.js', 1) }}"></script>
-            <script src="{{ pathto('_static/js/prism.js', 1) }}" data-manual></script>
+            <script src="{{ pathto('_static/js/prism.js', 1) }}"></script>
 
             <script>
 $(document).ready(function() {
 
-    $(".language-default pre").each(function(i, element) {
-        Prism.highlightElement(element);
-    });
+    // $(".language-default pre").each(function(i, element) {
+    //     Prism.highlightElement(element);
+    // });
 
-    $(".language-bash pre").each(function(i, element) {
-        Prism.highlightElement(element);
-    });
+    // $(".language-bash pre").each(function(i, element) {
+    //     Prism.highlightElement(element);
+    // });
 
-    $(".language-python pre").each(function(i, element) {
-        Prism.highlightElement(element);
-    });
+    // $(".language-python pre").each(function(i, element) {
+    //     Prism.highlightElement(element);
+    // });
 
-    $(".language-c pre").each(function(i, element) {
-        Prism.highlightElement(element);
-    });
+    // $(".language-c pre").each(function(i, element) {
+    //     Prism.highlightElement(element);
+    // });
 
-    $(".language-cpp pre").each(function(i, element) {
-        Prism.highlightElement(element);
-    });
+    // $(".language-cpp pre").each(function(i, element) {
+    //     Prism.highlightElement(element);
+    // });
 
-    $(".language-fortran pre").each(function(i, element) {
-        Prism.highlightElement(element);
-    });
+    // $(".language-fortran pre").each(function(i, element) {
+    //     Prism.highlightElement(element);
+    // });
 
-    $(".language-markdown pre").each(function(i, element) {
-        Prism.highlightElement(element);
-    });
+    // $(".language-markdown pre").each(function(i, element) {
+    //     Prism.highlightElement(element);
+    // });
 
-    $(".language-rest pre").each(function(i, element) {
-        Prism.highlightElement(element);
-    });
+    // $(".language-rest pre").each(function(i, element) {
+    //     Prism.highlightElement(element);
+    // });
 
     anchors.add();
 });

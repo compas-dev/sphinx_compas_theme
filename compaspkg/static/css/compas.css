@@ -26,6 +26,7 @@ h3 {
 
 a {
 	text-decoration: none;
+	color: #0092d2;
 }
 
 a:hover {
@@ -42,6 +43,10 @@ ol ol, ol ul, ul ol, ul ul {
 	margin-bottom: 1rem;
 }
 
+table {
+	margin: 2rem 0;
+}
+
 /*li .py-mod {
 	word-wrap: break-word;
 }*/
@@ -49,25 +54,24 @@ ol ol, ol ul, ul ol, ul ul {
 .compas-navbar {
 	height: 4rem;
 	z-index: 1053;
-	background-color: #eee;
-	border-bottom: 1px solid #ccc;
+	background-color: #0092d2;
+	border-bottom: 0px solid #ccc;
 }
 
 .compas-navbar .navbar-brand,
 .compas-navbar .nav-link {
-	color: #888;
+	color: #eee;
 }
 
 .compas-navbar .navbar-brand:hover,
 .compas-navbar .nav-link:hover,
 .compas-navbar .navbar-brand.active,
 .compas-navbar .nav-link.active {
-	color: #222;
+	color: #fff;
 }
 
 .compas-navbar .navbar-brand.active,
 .compas-navbar .nav-link.active {
-	font-weight: 600;
 }
 
 .compas-container {
