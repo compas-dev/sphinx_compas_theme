@@ -1,8 +1,3 @@
-graft src
-
-prune data
-prune docs
-prune libs
 prune tests
 prune temp
 prune .github
@@ -12,9 +7,15 @@ include README.md
 include AUTHORS.md
 include requirements.txt
 
-exclude requirements-dev.txt 
-exclude pytest.ini .bumpversion.cfg .editorconfig
+include *.txt
+include *.rst
+
+recursive-include sphinx_compas_theme *
+recursive-include compas *
+recursive-include compaspkg *
+
+exclude .bumpversion.cfg
 exclude tasks.py
-exclude CODE_OF_CONDUCT.md CONTRIBUTING.md
+exclude CONTRIBUTING.md
 
 global-exclude *.py[cod] __pycache__ *.dylib *.nb[ic] .DS_Store
