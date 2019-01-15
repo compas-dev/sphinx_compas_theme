@@ -2,21 +2,6 @@
 @import "bootstrap-scss/variables";
 @import "bootstrap-scss/mixins";
 
-// .rubric {
-// 	padding: $alert-padding-y $alert-padding-x;
-// 	border: $alert-border-width solid transparent;
-// 	@include border-radius($alert-border-radius);
-// 	@include alert-variant(
-// 		theme-color-level(light, -10),
-// 		theme-color-level(light, -9),
-// 		theme-color-level(light, 6)
-// 	);
-// 	font-weight: 600;
-// 	margin-top: 3rem;
-// 	margin-bottom: 2rem;
-// 	width: 100%;
-// }
-
 .rubric {
 	font-weight: normal;
 	font-size: 1.5rem;
@@ -66,9 +51,9 @@
 .admonition.note,
 .admonition.notes {
 	@include alert-variant(
-		theme-color-level(secondary, -10),
-		theme-color-level(secondary, -9),
-		theme-color-level(secondary, 6)
+		theme-color-level(info, -10),
+		theme-color-level(info, -9),
+		theme-color-level(info, 6)
 	);
 }
 
