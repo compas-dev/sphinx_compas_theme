@@ -56,15 +56,21 @@
                 <li class="nav-item {% if theme_navbar_active == 'packages' %}active{% endif %}">
                     <a class="nav-link {% if theme_navbar_active == 'packages' %}active{% endif %}" href="/packages/">Packages</a>
                 </li>
-                <!-- <li class="nav-item {% if theme_navbar_active == 'workshops' %}active{% endif %}">
-                    <a class="nav-link {% if theme_navbar_active == 'workshops' %}active{% endif %}" href="/workshops/">Workshops</a>
-                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" target="_blank" href="http://forum.compas-framework.org">Forum</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" target="_blank" href="http://forum.compas-framework.org">Developers</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" target="_blank" href="http://github.com/compas-dev">Github</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" target="_blank" href="https://pypi.org/project/COMPAS/">PyPI</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" target="_blank" href="https://anaconda.org/conda-forge/compas">Anaconda</a>
+                </li>1
             </ul>
         </header>
         
@@ -101,6 +107,8 @@
                             | replace('<div class="highlight-markdown notranslate">', '<div class="language-markdown notranslate">')
                             | replace('<div class="highlight-latex notranslate">', '<div class="language-latex notranslate">')
                             | replace('<div class="highlight-bib notranslate">', '<div class="language-bib notranslate">')
+                            | replace('<div class="highlight-json notranslate">', '<div class="language-json notranslate">')
+
                             | replace('<div class="code ipython3 highlight-default notranslate">', '<div class="language-python notranslate">')
 
                             | replace('<div class="highlight-none notranslate">', '<div class="nohighlight notranslate">')
