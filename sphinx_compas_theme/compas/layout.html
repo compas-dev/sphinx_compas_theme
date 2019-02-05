@@ -70,11 +70,11 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" target="_blank" href="https://anaconda.org/conda-forge/compas">Anaconda</a>
-                </li>1
+                </li>
             </ul>
         </header>
         
-        <div class="container-fluid compas-container">
+        <div class="container compas-container">
             <div class="row flex-xl-nowrap">
 
                 <!-- main content -->
@@ -121,9 +121,9 @@
 
                 </main>
 
-                <!-- site navigation sidebar -->
-
                 {% if theme_navbar_active in ('main', 'packages')  %}
+
+                <!-- site navigation sidebar -->
 
                 <div class="col-12 col-md-3 col-xl-2 compas-sidebar" role="navigation"> 
                     <div class="navbar-light">
@@ -172,11 +172,7 @@
                     </div>
                 </div>
 
-                {% endif %}
-
                 <!-- table of contents of main content -->
-                
-                {% if theme_navbar_active in ('main', 'packages')  %}
 
                 <div class="d-none d-xl-block col-xl-2 compas-toc" role="toc">
 
