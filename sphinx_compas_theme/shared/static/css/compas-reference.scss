@@ -100,9 +100,9 @@ table {
 	border: 1px solid #eee;
 }
 
-.longtable .row-odd {}
+// .longtable .row-odd {}
 
-.longtable .row-even {}
+// .longtable .row-even {}
 
 @media (min-width: 768px) {
 	.longtable tbody tr td:first-child {
@@ -124,11 +124,11 @@ table {
 	margin: 0;
 }
 
-.function {}
+// .function {}
 
-.class {}
+// .class {}
 
-.method {}
+// .method {}
 
 .staticmethod > dt,
 .classmethod > dt,
@@ -143,12 +143,12 @@ table {
 	background-color: #eee;
 }
 
-.staticmethod > dt em,
-.classmethod > dt em,
-.method > dt em,
-.function > dt em,
-.class > dt em {
-}
+// .staticmethod > dt em,
+// .classmethod > dt em,
+// .method > dt em,
+// .function > dt em,
+// .class > dt em {
+// }
 
 .staticmethod > dt > code,
 .classmethod > dt > code,
@@ -158,7 +158,7 @@ table {
 	background-color: #eee;
 }
 
-.class .property {}
+// .class .property {}
 
 .descclassname {
 	border-radius: 0;
@@ -170,12 +170,12 @@ table {
 	border-radius: 0;
 }
 
-.staticmethod > dd > p,
-.classmethod > dd > p,
-.method > dd > p,
-.function > dt,
-.class > dd > p {
-}
+// .staticmethod > dd > p,
+// .classmethod > dd > p,
+// .method > dd > p,
+// .function > dt,
+// .class > dd > p {
+// }
 
 .compas-content .section {
 	position: relative;
@@ -233,6 +233,6 @@ dt .brackets::after {
 
 /* ----------------------------------------------------------------- */
 
-.search-results {
+// .search-results {
 
-}
+// }

@@ -56,7 +56,7 @@ setup(
     ],
     install_requires=requirements,
     python_requires='>=2.7',
-    entry_points = {
+    entry_points={
         'sphinx.html_themes': [
             'compas = sphinx_compas_theme',
             'compaspkg = sphinx_compas_theme',
