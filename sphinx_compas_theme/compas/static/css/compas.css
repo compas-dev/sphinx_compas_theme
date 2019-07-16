@@ -44,10 +44,6 @@ table {
 	margin: 2rem 0;
 }
 
-/*li .py-mod {
-	word-wrap: break-word;
-}*/
-
 .compas-navbar {
 	height: 4rem;
 	z-index: 1053;
@@ -80,20 +76,9 @@ table {
 	content: none;
 }
 
-.compas-container :not(pre) > code[class*="language-"],
+/* .compas-container :not(pre) > code[class*="language-"],
 .compas-container pre[class*="language-"] {
-	background-color: #eeeeee;
-}
-
-.compas-footer {
-	width: 100%;
-	min-height: 8rem;
-	background-color: #eee;
-	border-top: 1px solid #ccc;
-	padding: 2rem;
-	color: #888;
-	text-align: center;
-}
+} */
 
 .compas-sidebar {
 	order: 0;
@@ -311,22 +296,6 @@ table {
 	padding: 0;
 }
 
-/*.compas-content .section h2::before {
-	padding-top: 6rem;
-	margin-top: -6rem;
-	visibility: hidden;
-	content: "";
-}
-
-.compas-content .section h3::before {
-	display: block;
-	padding-top: 6rem;
-	margin-top: -6rem;
-	visibility: hidden;
-	content: "";
-	z-index: -1;
-}
-*/
 .compas-content .section > ul {
 	margin-bottom: 2rem;
 }
@@ -364,7 +333,7 @@ table {
 }
 
 .highlight pre {
-	padding: 2rem;
+	padding: 0rem;
 }
 
 .nohighlight pre {
@@ -378,7 +347,6 @@ table {
 .compas-sideways {
 	margin-top: 4rem;
 }
-
 
 .compas-next {
 	float: right;
