@@ -1,5 +1,3 @@
-{% extends "basic/layout.html" %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,27 +31,25 @@
 
 <body data-spy="scroll" data-target="#compas-localnav">
 
-    <header>
-        <nav class="navbar navbar-expand compas-navbar fixed-top">
-            <a class="navbar-brand" href="/">
-                <img src="{{ pathto('/_static/images/compas_icon_white.png', 1) }}" width="36px" height="36px" alt="compas" />
-            </a>
+    <nav class="navbar navbar-expand compas-navbar">
+        <a class="navbar-brand" href="/">
+            <img src="{{ pathto('_static/images/compas_icon_white.png', 1) }}" width="36px" height="36px" alt="compas" />
+        </a>
 
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="packages.html">Packages</a></li>
-                <li class="nav-item active"><a class="nav-link active" href="main/index.html">Documentation</a></li>
-                <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li> 
-            </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="packages.html">Packages</a></li>
+            <li class="nav-item active"><a class="nav-link active" href="main/index.html">Documentation</a></li>
+            <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li> 
+        </ul>
 
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" target="_blank" href="http://forum.compas-framework.org">Forum</a></li>
-                <li class="nav-item"><a class="nav-link" target="_blank" href="http://github.com/compas-dev">Github</a></li>
-                <li class="nav-item"><a class="nav-link" target="_blank" href="https://pypi.org/project/COMPAS/">PyPI</a></li>
-                <li class="nav-item"><a class="nav-link" target="_blank" href="https://anaconda.org/conda-forge/compas">Anaconda</a></li>
-            </ul>
-        </nav>
-    </header>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" target="_blank" href="http://forum.compas-framework.org">Forum</a></li>
+            <li class="nav-item"><a class="nav-link" target="_blank" href="http://github.com/compas-dev">Github</a></li>
+            <li class="nav-item"><a class="nav-link" target="_blank" href="https://pypi.org/project/COMPAS/">PyPI</a></li>
+            <li class="nav-item"><a class="nav-link" target="_blank" href="https://anaconda.org/conda-forge/compas">Anaconda</a></li>
+        </ul>
+    </nav>
     
     <div class="container compas-container">
         <div class="row flex-xl-nowrap">
