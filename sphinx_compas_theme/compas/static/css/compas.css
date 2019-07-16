@@ -80,6 +80,11 @@ table {
 	content: none;
 }
 
+.compas-container :not(pre) > code[class*="language-"],
+.compas-container pre[class*="language-"] {
+	background-color: #eeeeee;
+}
+
 .compas-footer {
 	width: 100%;
 	min-height: 8rem;
