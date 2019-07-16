@@ -45,7 +45,6 @@ table {
 }
 
 .compas-navbar {
-	height: 4rem;
 	z-index: 1053;
 	background-color: #0092d2;
 }
@@ -65,20 +64,6 @@ table {
 .compas-container {
 	max-width: 1440px;
 }
-
-.compas-container code[class*="language-"]::after,
-.compas-container pre[class*="language-"]::after {
-	content: none;
-}
-
-.compas-container code[class*="language-"]::before,
-.compas-container pre[class*="language-"]::before {
-	content: none;
-}
-
-/* .compas-container :not(pre) > code[class*="language-"],
-.compas-container pre[class*="language-"] {
-} */
 
 .compas-sidebar {
 	order: 0;
@@ -329,14 +314,11 @@ table {
 .highlight {
 	margin-top: 2rem;
 	margin-bottom: 2rem;
-	font-size: 0.9rem;
-}
-
-.highlight pre {
-	padding: 0rem;
+	font-size: 0.8rem;
 }
 
 .nohighlight pre {
+	padding: 2rem;
 	background-color: #eee;
 }
 
