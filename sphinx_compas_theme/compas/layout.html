@@ -62,24 +62,20 @@
                         | replace('<div class="highlight"><pre>', '<div class="highlight"><pre><code>')
                         | replace('</pre></div>', '</code></pre></div>')
 
-                        | replace('<div class="highlight-default notranslate">', '<div class="language-none notranslate">')
-                        | replace('<div class="highlight-python notranslate">', '<div class="language-python notranslate">')
-                        | replace('<div class="highlight-bash notranslate">', '<div class="language-bash notranslate">')
-                        | replace('<div class="highlight-shell notranslate">', '<div class="language-bash notranslate">')
-                        | replace('<div class="highlight-console notranslate">', '<div class="language-bash notranslate">')
-                        | replace('<div class="highlight-c notranslate">', '<div class="language-c notranslate">')
-                        | replace('<div class="highlight-cpp notranslate">', '<div class="language-cpp notranslate">')
-                        | replace('<div class="highlight-fortran notranslate">', '<div class="language-fortran notranslate">')
-                        | replace('<div class="highlight-rest notranslate">', '<div class="language-rest notranslate">')
-                        | replace('<div class="highlight-markdown notranslate">', '<div class="language-markdown notranslate">')
-                        | replace('<div class="highlight-latex notranslate">', '<div class="language-latex notranslate">')
-                        | replace('<div class="highlight-bib notranslate">', '<div class="language-bib notranslate">')
-                        | replace('<div class="highlight-json notranslate">', '<div class="language-json notranslate">')
-
-                        | replace('<div class="code ipython3 highlight-default notranslate">', '<div class="language-python notranslate">')
-
-                        | replace('<div class="highlight-none notranslate">', '<div class="nohighlight notranslate">')
-                        | replace('<div class="language-none notranslate">', '<div class="nohighlight notranslate">')
+                        | replace("highlight-default", "language-none")
+                        | replace("highlight-python", "language-python")
+                        | replace("highlight-bash", "language-bash")
+                        | replace("highlight-shell", "language-bash")
+                        | replace("highlight-console", "language-bash")
+                        | replace("highlight-c", "language-c")
+                        | replace("highlight-cpp", "language-cpp")
+                        | replace("highlight-fortran", "language-fortran")
+                        | replace("highlight-markdown", "language-markdown")
+                        | replace("highlight-latex", "language-latex")
+                        | replace("highlight-bib", "language-bib")
+                        | replace("highlight-json", "language-json")
+                        | replace("highlight-none", "nohighlight")
+                        | replace("language-none", "nohighlight")
                     %}
 
                     {{ body }}
