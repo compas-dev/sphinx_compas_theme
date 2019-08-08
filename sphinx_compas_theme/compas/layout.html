@@ -61,8 +61,7 @@
                     {% set body = body
                         | replace('<div class="highlight"><pre>', '<div class="highlight"><pre><code>')
                         | replace('</pre></div>', '</code></pre></div>')
-
-                        | replace("highlight-default", "language-none")
+                        | replace("highlight-default", "language-python")
                         | replace("highlight-python", "language-python")
                         | replace("highlight-bash", "language-bash")
                         | replace("highlight-shell", "language-bash")
@@ -74,8 +73,6 @@
                         | replace("highlight-latex", "language-latex")
                         | replace("highlight-bib", "language-bib")
                         | replace("highlight-json", "language-json")
-                        | replace("highlight-none", "nohighlight")
-                        | replace("language-none", "nohighlight")
                     %}
 
                     {{ body }}
