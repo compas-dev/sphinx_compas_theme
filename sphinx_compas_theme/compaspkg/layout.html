@@ -42,7 +42,7 @@
 
         <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a class="nav-link" target="_blank" href="{{ theme_package_repo }}">Github</a></li>
-            <li class="nav-item"><a class="nav-link" target="_blank" href="https://compas-dev.github.io">Github</a></li>
+            <li class="nav-item"><a class="nav-link" target="_blank" href="https://compas-dev.github.io">COMPAS framework</a></li>
         </ul>
     </nav>    
 
@@ -144,14 +144,16 @@
         </div>
     </div>
 
-    <footer class="compas-footer">
-        {% if last_updated %}
-            {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}
-        {% endif %}
+    <footer class="bg-dark pb-5">
+        <div class="container text-center pt-5 pb-5 text-muted">
+            {% if last_updated %}
+                {% trans last_updated=last_updated|e %}Last updated on {{ last_updated }}.{% endtrans %}
+            {% endif %}
 
-        {% if show_sphinx %}
-            {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx-doc.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}
-        {% endif %}
+            {% if show_sphinx %}
+                {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx-doc.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}
+            {% endif %}
+        </div>
     </footer>
 
     {% block footer %}
