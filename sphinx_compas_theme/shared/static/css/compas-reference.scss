@@ -141,6 +141,7 @@ table {
 	margin-right: -0.5rem;
 	border-bottom: 0px solid #eee;
 	background-color: #eee;
+	font-weight: normal;
 }
 
 // .staticmethod > dt em,
@@ -156,6 +157,7 @@ table {
 .function > dt > code,
 .class > dt > code {
 	background-color: #eee;
+	font-weight: bold;
 }
 
 // .class .property {}

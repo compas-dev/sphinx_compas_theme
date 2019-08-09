@@ -13,7 +13,8 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="{{ pathto('_static/css/prism.css', 1) }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/default.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ pathto('_static/css/prism.css', 1) }}" /> -->
     <link rel="stylesheet" type="text/css" href="{{ pathto('_static/css/compas.css', 1) }}" />
     <link rel="stylesheet" type="text/css" href="{{ pathto('_static/css/compas-reference.css', 1) }}" />
 
@@ -68,6 +69,7 @@
                         | replace("highlight-latex", "language-latex")
                         | replace("highlight-bib", "language-bib")
                         | replace("highlight-json", "language-json")
+                        | replace("highlight-none", "language-none")
                     %}
 
                     {{ body }}
@@ -173,16 +175,25 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.0.0/anchor.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
 
         <script src="{{ pathto('_static/underscore.js', 1) }}"></script>
         <script src="{{ pathto('_static/doctools.js', 1) }}"></script>
         <script src="{{ pathto('_static/js/searchtools_.js', 1) }}"></script>
-        <script src="{{ pathto('_static/js/prism.js', 1) }}"></script>
+        <!-- <script src="{{ pathto('_static/js/prism.js', 1) }}"></script> -->
 
         <script>
-            $(document).ready(function() {
-                anchors.add();
-            });
+        $(document).ready(function() {
+        $(".language-default code").addClass("python");
+        $(".language-python code").addClass("python");
+        $(".language-bash code").addClass("bash");
+        $(".language-cpp code").addClass("cpp");
+        $(".language-json code").addClass("json");
+        $(".language-none code").addClass("plaintext");
+
+        hljs.initHighlighting();
+        anchors.add();
+        });
         </script>
     {% endblock %}
 </body>
