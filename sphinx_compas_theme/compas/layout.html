@@ -57,7 +57,7 @@
     <div class="container-fluid">
         <div class="row flex-xl-nowrap">
 
-            <main class="col-12 col-md-9 col-xl-8 compas-content" role="main">
+            <main class="col-12 col-md-9 col-xl-{% if theme_navbar_active == 'main' %}8{% else %}9{% endif %} compas-content" role="main">
                 <div class="container">
                 {% block content %}
 
@@ -87,7 +87,7 @@
 
             <!-- site navigation sidebar -->
 
-            <div class="col-12 col-md-3 col-xl-2 compas-sidebar" role="navigation"> 
+            <div class="col-12 col-md-3 col-xl-{% if theme_navbar_active == 'main' %}2{% else %}3{% endif %} compas-sidebar" role="navigation"> 
                 <div class="navbar-light">
 
                     <form id="" class="d-flex compas-searchbox" action="{{ pathto('search') }}" method="get">
@@ -136,6 +136,8 @@
 
             <!-- table of contents of main content -->
 
+            {% if theme_navbar_active == 'main' %}
+
             <div class="d-none d-xl-block col-xl-2 compas-toc" role="toc">
 
                 {% set toc = toc
@@ -149,6 +151,8 @@
                 {{ toc }}
 
             </div>
+
+            {% endif %}
 
         </div>
     </div>
