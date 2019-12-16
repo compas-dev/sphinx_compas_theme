@@ -62,73 +62,69 @@ def confirm(question):
 #     log.write('Use "invoke -h <taskname>" to get detailed help for a task.')
 
 
-# @task(help={
-#     'docs': 'True to clean up generated documentation, otherwise False',
-#     'bytecode': 'True to clean up compiled python files, otherwise False.',
-#     'builds': 'True to clean up build/packaging artifacts, otherwise False.'})
-# def clean(ctx, docs=True, bytecode=True, builds=True):
-#     """Cleans the local copy from compiled artifacts."""
-#     if builds:
-#         ctx.run('python setup.py clean')
+@task(help={
+    'docs': 'True to clean up generated documentation, otherwise False',
+    'bytecode': 'True to clean up compiled python files, otherwise False.',
+    'builds': 'True to clean up build/packaging artifacts, otherwise False.'})
+def clean(ctx, docs=True, bytecode=True, builds=True):
+    """Cleans the local copy from compiled artifacts."""
+    if builds:
+        ctx.run('python setup.py clean')
 
-#     if bytecode:
-#         for root, dirs, files in os.walk(BASE_FOLDER):
-#             for f in files:
-#                 if f.endswith('.pyc'):
-#                     os.remove(os.path.join(root, f))
-#             if '.git' in dirs:
-#                 dirs.remove('.git')
+    if bytecode:
+        for root, dirs, files in os.walk(BASE_FOLDER):
+            for f in files:
+                if f.endswith('.pyc'):
+                    os.remove(os.path.join(root, f))
+            if '.git' in dirs:
+                dirs.remove('.git')
 
-#     folders = []
+    folders = []
 
-#     if docs:
-#         folders.append('docs/api/generated')
+    # if docs:
+    #     folders.append('docs/api/generated')
 
-#     folders.append('dist/')
+    folders.append('dist/')
 
-#     # TODO: Add other packages
-#     if bytecode:
-#         folders.append('src/compas/__pycache__')
+    if builds:
+        folders.append('build/')
+        folders.append('sphinx_compas_theme.egg-info/')
 
-#     if builds:
-#         folders.append('build/')
-#         folders.append('src/compas.egg-info/')
-
-#     for folder in folders:
-#         rmtree(os.path.join(BASE_FOLDER, folder), ignore_errors=True)
+    for folder in folders:
+        rmtree(os.path.join(BASE_FOLDER, folder), ignore_errors=True)
 
 
-# @task(help={
-#       'rebuild': 'True to clean all previously built docs before starting, otherwise False.',
-#       'doctest': 'True to run doctests, otherwise False.',
-#       'check_links': 'True to check all web links in docs for validity, otherwise False.'})
-# def docs(ctx, doctest=False, rebuild=True, check_links=False):
-#     """Builds package's HTML documentation."""
-#     if rebuild:
-#         clean(ctx)
+@task(help={
+      'rebuild': 'True to clean all previously built docs before starting, otherwise False.',
+      'doctest': 'True to run doctests, otherwise False.',
+      'check_links': 'True to check all web links in docs for validity, otherwise False.'})
+def docs(ctx, doctest=False, rebuild=True, check_links=False):
+    """Builds package's HTML documentation."""
+    if rebuild:
+        clean(ctx)
 
-#     if doctest:
-#         ctx.run('sphinx-build -b doctest docs dist/docs')
+    if doctest:
+        ctx.run('sphinx-build -b doctest docs dist/docs')
 
-#     ctx.run('sphinx-build -b html docs dist/docs')
-#     if check_links:
-#         ctx.run('sphinx-build -b linkcheck docs dist/docs')
+    ctx.run('sphinx-build -b html docs dist/docs')
+    if check_links:
+        ctx.run('sphinx-build -b linkcheck docs dist/docs')
 
 
-# @task()
-# def check(ctx):
-#     """Check the consistency of documentation, coding style and a few other things."""
-#     log.write('Checking MANIFEST.in...')
-#     ctx.run('check-manifest --ignore-bad-ideas=test.so,fd.so,smoothing.so,drx_c.so')
+@task()
+def check(ctx):
+    """Check the consistency of documentation, coding style and a few other things."""
+    log.write('Checking MANIFEST.in...')
+    ctx.run('check-manifest --ignore-bad-ideas=test.so,fd.so,smoothing.so,drx_c.so')
 
-#     log.write('Checking metadata...')
-#     ctx.run('python setup.py check --strict --metadata')
+    log.write('Checking metadata...')
+    ctx.run('python setup.py check --strict --metadata')
 
-#     # log.write('Running flake8 python linter...')
-#     # ctx.run('flake8 src tests setup.py')
+    # log.write('Running flake8 python linter...')
+    # ctx.run('flake8 src tests setup.py')
 
-#     # log.write('Checking python imports...')
-#     # ctx.run('isort --check-only --diff --recursive src tests setup.py')
+    # log.write('Checking python imports...')
+    # ctx.run('isort --check-only --diff --recursive src tests setup.py')
 
 
 # @task(help={
@@ -152,8 +148,8 @@ def release(ctx, release_type):
     if release_type not in ('patch', 'minor', 'major'):
         raise Exit('The release type parameter is invalid.\nMust be one of: major, minor, patch')
 
-    # # Run checks
-    # ctx.run('invoke check test')
+    # Run checks
+    ctx.run('invoke check')
 
     # Bump version and git tag it
     ctx.run('bumpversion %s --verbose' % release_type)
