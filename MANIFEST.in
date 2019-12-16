@@ -17,5 +17,6 @@ recursive-include compaspkg *
 exclude .bumpversion.cfg
 exclude tasks.py
 exclude CONTRIBUTING.md
+exclude requirements-dev.txt
 
 global-exclude *.py[cod] __pycache__ *.dylib *.nb[ic] .DS_Store
