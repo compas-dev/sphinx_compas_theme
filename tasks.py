@@ -155,7 +155,7 @@ def release(ctx, release_type):
     ctx.run('bumpversion %s --verbose' % release_type)
 
     # Build project
-    ctx.run('python setup.py clean --all sdist bdist_wheel')
+    ctx.run('python setup.py clean --all')
 
     # Upload to pypi
     if confirm('You are about to upload the release to pypi.org. Are you sure? [y/N]'):
