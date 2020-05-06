@@ -2,10 +2,9 @@
   font-size: 1.25em;
 }
 
-/* :target {
-	padding-top: calc(3rem + 74px);
-  margin-top: calc(-3rem - 74px);
-} */
+:target {
+  scroll-margin-top: calc(74px + 3rem);
+}
 
 h2 {
   margin-top: 3rem;
