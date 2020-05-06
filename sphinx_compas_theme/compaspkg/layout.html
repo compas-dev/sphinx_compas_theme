@@ -184,8 +184,7 @@
 
   <script src="{{ pathto('_static/underscore.js', 1) }}"></script>
   <script src="{{ pathto('_static/doctools.js', 1) }}"></script>
-  <script src="{{ pathto('_static/js/searchtools_.js', 1) }}"></script>
-  <!-- <script src="{{ pathto('_static/js/prism.js', 1) }}"></script> -->
+  <script src="{{ pathto('_static/searchtools.js', 1) }}"></script>
 
   <script>
   $(document).ready(function() {
@@ -200,5 +199,7 @@
     anchors.add();
   });
   </script>
+  {% block footer %}
+  {% endblock %}
 </body>
 </html>
