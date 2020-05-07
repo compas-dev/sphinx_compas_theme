@@ -29,6 +29,8 @@ blockquote {
   font-style: italic;
   padding-left: 2rem;
   padding-right: 2rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 ol ol, ol ul, ul ol, ul ul {
@@ -220,6 +222,8 @@ table {
 .compas-navigation .nav .nav .nav .nav-link {
   color: #888;
   padding-left: 3rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
   font-size: 0.8rem;
   font-weight: normal
 }
