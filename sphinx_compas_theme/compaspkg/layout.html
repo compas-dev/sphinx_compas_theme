@@ -43,7 +43,7 @@
   <header id="header" class="compas-header d-flex align-items-center">
     <nav class="navbar navbar-expand navbar-dark col flex-column flex-md-row text-center">
       <!-- brand -->
-      <a class="navbar-brand" href="/index.html">
+      <a class="navbar-brand" href="{{ theme_package_docs }}">
         <img src="{{ pathto('_static/images/compas_icon_white.png', 1) }}" alt="{{ theme_package_title }}" width="48px" height="48px" />
       </a>
       <!-- brand -->
@@ -73,7 +73,7 @@
   <div class="container-fluid">
     <div class="row">
       <!-- main -->
-      <main class="col-12 col-md-9 col-xl-7 px-2 px-md-5 py-4 compas-content" role="main">
+      <main class="col-12 col-md-9 col-xl-7 px-2 px-md-5 py-5 compas-content" role="main">
         {% block content %}
         {% set body = body
           | replace('<h1>', '<h1 class="display-4 p-0 mb-5">')
