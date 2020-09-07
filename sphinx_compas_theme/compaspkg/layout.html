@@ -52,8 +52,23 @@
         <li class="nav-item active"><a class="nav-link" href="{{ theme_package_docs }}">{{ theme_package_title }}</a></li>
       </ul>
       <!-- primary -->
-      <!-- social -->
       <ul class="navbar-nav d-none d-md-flex ml-md-auto">
+        {% if theme_package_old_versions %}
+        <!-- version -->
+        <li class="nav-item nav-versions dropdown">
+          <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Version
+          </a>
+          <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="bd-versions">
+            {% for version in theme_package_old_versions %}
+              <a class="dropdown-item" href="{{ version[1] }}">{{ version[0] }}</a>
+            {% endfor %}
+          </div>
+        </li>
+        {% endif %}
+        <!-- version -->
+        <!-- social -->
         <li class="nav-item">
           <a class="nav-link" href="{{ theme_package_repo }}" target="_blank">
             <span class="fab fa-github fa-1x"></span>
@@ -64,8 +79,8 @@
             <span class="fab fa-discourse fa-1x"></span>
           </a>
         </li>
+        <!-- social -->
       </ul>
-      <!-- social -->
     </nav>
   </header>
   <!-- header -->
@@ -210,6 +225,11 @@
 
     hljs.initHighlighting();
     anchors.add();
+
+    $('.nav-versions .dropdown-item').filter(function(i, ver) {
+      return window.location.href.startsWith(ver.href);
+    }).addClass("active");
+
   });
   </script>
   {% block footer %}
