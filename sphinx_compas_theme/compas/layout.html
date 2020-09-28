@@ -85,7 +85,6 @@
       <main class="col-12 col-md-9 col-xl-7 px-2 px-md-5 py-5 compas-content" role="main">
         {% block content %}
           {% set body = body
-            | replace('<h1>', '<h1 class="display-4 p-0 mb-5">')
             | replace('<div class="highlight"><pre>', '<div class="highlight"><pre><code>')
             | replace('</pre></div>', '</code></pre></div>')
             | replace("highlight-default", "language-python")

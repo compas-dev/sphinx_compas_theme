@@ -5,7 +5,7 @@
 .rubric {
 	font-weight: normal;
 	font-size: 1.5rem;
-	margin-top: 3rem;
+	margin-top: 2rem;
 	margin-bottom: 1rem;
 	border-bottom: 4px solid #eee;
 	color: #222;
@@ -33,10 +33,10 @@
 
 .admonition {
 	padding: $alert-padding-y $alert-padding-x;
-	margin-top: 2rem;
-	margin-bottom: 2rem;
+	margin-top: 0rem;
+	margin-bottom: 1rem;
 	border: $alert-border-width solid transparent;
-	@include border-radius($alert-border-radius);
+	// @include border-radius($alert-border-radius);
 }
 
 .admonition p {
@@ -195,8 +195,8 @@ table {
 }
 
 .field-list {
-	margin-top: 1rem;
-	margin-bottom: 3rem;
+	margin-top: 0rem;
+	margin-bottom: 1rem;
 }
 
 .field-list dt {
