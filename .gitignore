@@ -106,4 +106,4 @@ ENV/
 .vscode
 
 # scss
-.sass-cache/
+**/.sass-cache/
