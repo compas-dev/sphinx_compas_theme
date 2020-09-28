@@ -1,6 +1,7 @@
 prune tests
 prune temp
 prune .github
+prune .sass-cache
 
 include LICENSE
 include README.md
