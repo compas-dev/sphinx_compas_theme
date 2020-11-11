@@ -57,17 +57,27 @@
       </ul>
       <!-- primary -->
       <ul class="navbar-nav d-none d-md-flex ml-md-auto">
-        {% if theme_package_old_versions %}
         <!-- version -->
+        {% if theme_package_old_versions %}
         <li class="nav-item nav-versions dropdown">
-          <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Version
+          <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            {{ theme_package_version }}
           </a>
           <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="bd-versions">
             {% for version in theme_package_old_versions %}
               <a class="dropdown-item" href="{{ version[1] }}">{{ version[0] }}</a>
             {% endfor %}
           </div>
+        </li>
+        {% elif theme_package_old_versions_txt %}
+        <meta id="doc_versions" data-url="{{ theme_package_old_versions_txt }}" data-docs="{{ theme_package_docs }}">
+        <li class="nav-item nav-versions dropdown">
+          <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            {{ theme_package_version }}
+          </a>
+          <div id="doc_version_list" class="dropdown-menu dropdown-menu-md-right" aria-labelledby="bd-versions"></div>
         </li>
         <!-- version -->
         {% endif %}
@@ -299,6 +309,18 @@
       return window.location.href.startsWith(ver.href);
   }).addClass("active");
   });
+
+  var url = $("#doc_versions").data("url");
+  var docs_site = $("#doc_versions").data("docs");
+
+  if (url) {
+    $.get(url, res=>{
+      var lines = res.match(/[^\r\n]+/g);
+      lines.forEach(version => {
+        $("#doc_version_list").append("<a class=\"dropdown-item\" href=\""+ docs_site + version + "/\">" + version + "</a>");
+      });
+    })
+  }
   </script>
 
   <script>
