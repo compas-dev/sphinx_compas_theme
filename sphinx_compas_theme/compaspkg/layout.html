@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>{{ theme_package_title }}</title>
+  <title>{{ theme_package_name }} - {{ title|striptags|e }}</title>
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -19,7 +19,7 @@
   {% if next %}
     <link rel="next" title="{{ next.title|striptags|e }}" href="{{ next.link|e }}" />
   {% endif %}
-  
+
   {% if prev %}
     <link rel="prev" title="{{ prev.title|striptags|e }}" href="{{ prev.link|e }}" />
   {% endif %}
@@ -122,7 +122,7 @@
       </main>
       <!-- content -->
       <!-- sidebar -->
-      <div class="col-12 col-md-3 compas-sidebar" role="navigation"> 
+      <div class="col-12 col-md-3 compas-sidebar" role="navigation">
         <form id="search" class="d-flex align-items-center compas-searchbox" action="{{ pathto('search') }}" method="get">
           <input class="form-control" type="text" name="q" placeholder="Search docs" />
           <input type="hidden" name="check_keywords" value="yes" />
@@ -136,17 +136,17 @@
           <div id="compas-navigation" class="collapse compas-navigation">
           {{ toctree
             | replace("<ul>", "<ul class=\"nav flex-column\">")
-            | replace("<ul class=\"current\">", "<ul class=\"nav flex-column active\">")  
+            | replace("<ul class=\"current\">", "<ul class=\"nav flex-column active\">")
             | replace("<li class=\"toctree-l1\">", "<li class=\"nav-item\">")
             | replace("<li class=\"toctree-l1 current\">", "<li class=\"nav-item active\">")
-            | replace("class=\"reference internal\"", "class=\"nav-link reference internal\"") 
-            | replace("class=\"current reference internal\"", "class=\"nav-link active current reference internal\"") 
+            | replace("class=\"reference internal\"", "class=\"nav-link reference internal\"")
+            | replace("class=\"current reference internal\"", "class=\"nav-link active current reference internal\"")
             | replace("<li class=\"toctree-l2\">", "<li class=\"nav-item\">")
             | replace("<li class=\"toctree-l2 current\">", "<li class=\"nav-item active\">")
             | replace("<li class=\"toctree-l3\">", "<li class=\"nav-item\">")
             | replace("<li class=\"toctree-l3 current\">", "<li class=\"nav-item active\">")
-            | replace("class=\"reference internal\"", "class=\"nav-link reference internal\"") 
-            | replace("class=\"current reference internal\"", "class=\"nav-link active current reference internal\"") 
+            | replace("class=\"reference internal\"", "class=\"nav-link reference internal\"")
+            | replace("class=\"current reference internal\"", "class=\"nav-link active current reference internal\"")
           }}
           </div>
         {% else %}
@@ -157,11 +157,11 @@
       <!-- toc -->
       <div class="d-none d-xl-block col-xl-2 compas-toc" role="toc">
         {% set toc = toc
-          | replace("<ul>", "<ul class=\"nav flex-column\">") 
-          | replace("<ul class=\"nav flex-column\">", "<ul class=\"nav flex-column\" id=\"compas-toc\">", 1) 
-          | replace("<li>", "<li class=\"nav-item\">") 
-          | replace("<a>", "<a class=\"nav-link\">") 
-          | replace("class=\"reference internal\"", "class=\"nav-link reference internal\"") 
+          | replace("<ul>", "<ul class=\"nav flex-column\">")
+          | replace("<ul class=\"nav flex-column\">", "<ul class=\"nav flex-column\" id=\"compas-toc\">", 1)
+          | replace("<li>", "<li class=\"nav-item\">")
+          | replace("<a>", "<a class=\"nav-link\">")
+          | replace("class=\"reference internal\"", "class=\"nav-link reference internal\"")
         %}
         {{ toc }}
       </div>
