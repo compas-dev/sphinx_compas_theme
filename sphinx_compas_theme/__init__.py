@@ -9,6 +9,12 @@ def get_html_theme_path():
     return [theme_path]
 
 
+def get_autosummary_templates_path():
+    here = os.path.abspath(os.path.dirname(__file__))
+    templates_path = os.path.join(here, 'templates')
+    return [templates_path]
+
+
 def setup(app):
     if hasattr(app, 'add_html_theme'):
         theme_path = get_html_theme_path()[0]
