@@ -274,9 +274,12 @@
   hljs.initHighlighting();
   anchors.add();
 
-  $('.nav-versions .dropdown-item').filter(function(i, ver) {
+  var selected_version = $('.nav-versions .dropdown-item').filter(function(i, ver) {
       return window.location.href.startsWith(ver.href);
-  }).addClass("active");
+  });
+  selected_version.addClass('active');
+  $("#bd-versions").text(selected_version.text());
+
   });
 
   var url = $("#doc_versions").data("url");
