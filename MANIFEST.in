@@ -15,6 +15,7 @@ recursive-include sphinx_compas_theme *
 recursive-include compas *
 recursive-include compaspkg *
 
+exclude .editorconfig
 exclude .bumpversion.cfg
 exclude tasks.py
 exclude CONTRIBUTING.md
