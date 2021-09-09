@@ -126,7 +126,7 @@ def docs(ctx, doctest=False, rebuild=False, check_links=False):
 def lint(ctx):
     """Check the consistency of coding style."""
     log.write('Running flake8 python linter...')
-    ctx.run('flake8 src')
+    ctx.run('flake8 sphinx_compas_theme')
 
 
 @task()
