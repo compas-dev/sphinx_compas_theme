@@ -5,6 +5,7 @@ import contextlib
 import glob
 import os
 import sys
+import tempfile
 from shutil import rmtree
 
 from invoke import Exit
@@ -95,7 +96,7 @@ def clean(ctx, docs=True, bytecode=True, builds=True):
 
         if builds:
             folders.append('build/')
-            folders.append('sphinx_compas_theme.egg-info/')
+            folders.append('src/sphinx_compas_theme.egg-info/')
 
         for folder in folders:
             rmtree(os.path.join(BASE_FOLDER, folder), ignore_errors=True)
@@ -126,7 +127,7 @@ def docs(ctx, doctest=False, rebuild=False, check_links=False):
 def lint(ctx):
     """Check the consistency of coding style."""
     log.write('Running flake8 python linter...')
-    ctx.run('flake8 sphinx_compas_theme')
+    ctx.run('flake8 src')
 
 
 @task()
@@ -198,6 +199,7 @@ def build_ghuser_components(ctx, gh_io_folder=None, ironpython=None):
         with tempfile.TemporaryDirectory('actions.ghcomponentizer') as action_dir:
             target_dir = source_dir = os.path.abspath('src/compas_ghpython/components')
             ctx.run('git clone https://github.com/compas-dev/compas-actions.ghpython_components.git {}'.format(action_dir))
+
             if not gh_io_folder:
                 import compas_ghpython
                 gh_io_folder = compas_ghpython.get_grasshopper_plugin_path('6.0')
@@ -212,26 +214,20 @@ def build_ghuser_components(ctx, gh_io_folder=None, ironpython=None):
 
 
 @task(help={
-      'release_type': 'Type of release follows semver rules. Must be one of: major, minor, patch, major-rc, minor-rc, patch-rc, rc, release.'})
+      'release_type': 'Type of release follows semver rules. Must be one of: major, minor, patch.'})
 def release(ctx, release_type):
     """Releases the project in one swift command!"""
-    if release_type not in ('patch', 'minor', 'major', 'major-rc', 'minor-rc', 'patch-rc', 'rc', 'release'):
-        raise Exit('The release type parameter is invalid.\nMust be one of: major, minor, patch, major-rc, minor-rc, patch-rc, rc, release')
-
-    is_rc = release_type.find('rc') >= 0
-    release_type = release_type.split('-')[0]
+    if release_type not in ('patch', 'minor', 'major'):
+        raise Exit('The release type parameter is invalid.\nMust be one of: major, minor, patch.')
 
     # Run checks
-    ctx.run('invoke check')
+    ctx.run('invoke check test')
 
     # Bump version and git tag it
-    if is_rc:
-        ctx.run('bump2version %s --verbose' % release_type)
-    elif release_type == 'release':
-        ctx.run('bump2version release --verbose')
-    else:
-        ctx.run('bump2version %s --verbose --no-tag' % release_type)
-        ctx.run('bump2version release --verbose')
+    ctx.run('bump2version %s --verbose' % release_type)
+
+    # Prepare the change log for the next release
+    prepare_changelog(ctx)
 
 
 @contextlib.contextmanager
