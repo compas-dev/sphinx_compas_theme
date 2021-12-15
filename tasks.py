@@ -90,9 +90,9 @@ def clean(ctx, docs=True, bytecode=True, builds=True):
 
         folders.append('dist/')
 
-        if bytecode:
-            for t in ('src', 'tests'):
-                folders.extend(glob.glob('{}/**/__pycache__'.format(t), recursive=True))
+        # if bytecode:
+        #     for t in ('src', 'tests'):
+        #         folders.extend(glob.glob('{}/**/__pycache__'.format(t), recursive=True))
 
         if builds:
             folders.append('build/')
@@ -102,25 +102,25 @@ def clean(ctx, docs=True, bytecode=True, builds=True):
             rmtree(os.path.join(BASE_FOLDER, folder), ignore_errors=True)
 
 
-@task(help={
-      'rebuild': 'True to clean all previously built docs before starting, otherwise False.',
-      'doctest': 'True to run doctests, otherwise False.',
-      'check_links': 'True to check all web links in docs for validity, otherwise False.'})
-def docs(ctx, doctest=False, rebuild=False, check_links=False):
-    """Builds package's HTML documentation."""
+# @task(help={
+#       'rebuild': 'True to clean all previously built docs before starting, otherwise False.',
+#       'doctest': 'True to run doctests, otherwise False.',
+#       'check_links': 'True to check all web links in docs for validity, otherwise False.'})
+# def docs(ctx, doctest=False, rebuild=False, check_links=False):
+#     """Builds package's HTML documentation."""
 
-    if rebuild:
-        clean(ctx)
+#     if rebuild:
+#         clean(ctx)
 
-    with chdir(BASE_FOLDER):
-        if doctest:
-            testdocs(ctx)
+#     with chdir(BASE_FOLDER):
+#         if doctest:
+#             testdocs(ctx)
 
-        opts = '-E' if rebuild else ''
-        ctx.run('sphinx-build {} -b html docs dist/docs'.format(opts))
+#         opts = '-E' if rebuild else ''
+#         ctx.run('sphinx-build {} -b html docs dist/docs'.format(opts))
 
-        if check_links:
-            linkcheck(ctx, rebuild=rebuild)
+#         if check_links:
+#             linkcheck(ctx, rebuild=rebuild)
 
 
 @task()
@@ -130,19 +130,19 @@ def lint(ctx):
     ctx.run('flake8 src')
 
 
-@task()
-def testdocs(ctx):
-    """Test the examples in the docstrings."""
-    log.write('Running doctest...')
-    ctx.run('pytest --doctest-modules')
+# @task()
+# def testdocs(ctx):
+#     """Test the examples in the docstrings."""
+#     log.write('Running doctest...')
+#     ctx.run('pytest --doctest-modules')
 
 
-@task()
-def linkcheck(ctx, rebuild=False):
-    """Check links in documentation."""
-    log.write('Running link check...')
-    opts = '-E' if rebuild else ''
-    ctx.run('sphinx-build {} -b linkcheck docs dist/docs'.format(opts))
+# @task()
+# def linkcheck(ctx, rebuild=False):
+#     """Check links in documentation."""
+#     log.write('Running link check...')
+#     opts = '-E' if rebuild else ''
+#     ctx.run('sphinx-build {} -b linkcheck docs dist/docs'.format(opts))
 
 
 @task()
@@ -159,19 +159,19 @@ def check(ctx):
         ctx.run('python setup.py check --strict --metadata')
 
 
-@task(help={
-      'checks': 'True to run all checks before testing, otherwise False.'})
-def test(ctx, checks=False, doctest=False):
-    """Run all tests."""
-    if checks:
-        check(ctx)
+# @task(help={
+#       'checks': 'True to run all checks before testing, otherwise False.'})
+# def test(ctx, checks=False, doctest=False):
+#     """Run all tests."""
+#     if checks:
+#         check(ctx)
 
-    with chdir(BASE_FOLDER):
-        cmd = ['pytest']
-        if doctest:
-            cmd.append('--doctest-modules')
+#     with chdir(BASE_FOLDER):
+#         cmd = ['pytest']
+#         if doctest:
+#             cmd.append('--doctest-modules')
 
-        ctx.run(' '.join(cmd))
+#         ctx.run(' '.join(cmd))
 
 
 @task
@@ -190,27 +190,27 @@ def prepare_changelog(ctx):
         ctx.run('git add CHANGELOG.md && git commit -m "Prepare changelog for next release"')
 
 
-@task(help={
-      'gh_io_folder': 'Folder where GH_IO.dll is located. Defaults to the Rhino 6.0 installation folder (platform-specific).',
-      'ironpython': 'Command for running the IronPython executable. Defaults to `ipy`.'})
-def build_ghuser_components(ctx, gh_io_folder=None, ironpython=None):
-    """Build Grasshopper user objects from source"""
-    with chdir(BASE_FOLDER):
-        with tempfile.TemporaryDirectory('actions.ghcomponentizer') as action_dir:
-            target_dir = source_dir = os.path.abspath('src/compas_ghpython/components')
-            ctx.run('git clone https://github.com/compas-dev/compas-actions.ghpython_components.git {}'.format(action_dir))
+# @task(help={
+#       'gh_io_folder': 'Folder where GH_IO.dll is located. Defaults to the Rhino 6.0 installation folder (platform-specific).',
+#       'ironpython': 'Command for running the IronPython executable. Defaults to `ipy`.'})
+# def build_ghuser_components(ctx, gh_io_folder=None, ironpython=None):
+#     """Build Grasshopper user objects from source"""
+#     with chdir(BASE_FOLDER):
+#         with tempfile.TemporaryDirectory('actions.ghcomponentizer') as action_dir:
+#             target_dir = source_dir = os.path.abspath('src/compas_ghpython/components')
+#             ctx.run('git clone https://github.com/compas-dev/compas-actions.ghpython_components.git {}'.format(action_dir))
 
-            if not gh_io_folder:
-                import compas_ghpython
-                gh_io_folder = compas_ghpython.get_grasshopper_plugin_path('6.0')
+#             if not gh_io_folder:
+#                 import compas_ghpython
+#                 gh_io_folder = compas_ghpython.get_grasshopper_plugin_path('6.0')
 
-            if not ironpython:
-                ironpython = 'ipy'
+#             if not ironpython:
+#                 ironpython = 'ipy'
 
-            gh_io_folder = os.path.abspath(gh_io_folder)
-            componentizer_script = os.path.join(action_dir, 'componentize.py')
+#             gh_io_folder = os.path.abspath(gh_io_folder)
+#             componentizer_script = os.path.join(action_dir, 'componentize.py')
 
-            ctx.run('{} {} {} {} --ghio "{}"'.format(ironpython, componentizer_script, source_dir, target_dir, gh_io_folder))
+#             ctx.run('{} {} {} {} --ghio "{}"'.format(ironpython, componentizer_script, source_dir, target_dir, gh_io_folder))
 
 
 @task(help={
@@ -220,8 +220,8 @@ def release(ctx, release_type):
     if release_type not in ('patch', 'minor', 'major'):
         raise Exit('The release type parameter is invalid.\nMust be one of: major, minor, patch.')
 
-    # Run checks
-    ctx.run('invoke check test')
+    # # Run checks
+    # ctx.run('invoke check test')
 
     # Bump version and git tag it
     ctx.run('bump2version %s --verbose' % release_type)
