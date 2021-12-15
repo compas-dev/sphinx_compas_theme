@@ -1,5 +1,15 @@
 .. rst-class:: detail
 
+{% set attributes_proper = [] %}
+{% set attributes_inherited = [] %}
+{% for item in attributes %}
+    {% if item not in inherited_members %}
+        {% set result = attributes_proper.append(item) %}
+    {% else %}
+        {% set result = attributes_inherited.append(item) %}
+    {% endif %}
+{% endfor %}
+
 {% set methods_proper = [] %}
 {% set methods_inherited = [] %}
 {% for item in methods %}
@@ -17,36 +27,38 @@
 .. autoclass:: {{ objname }}
 
     {% block attributes %}
-    {% if attributes %}
+    {% if attributes_proper %}
     .. rubric:: Attributes
-
     .. autosummary::
-    {% for item in attributes %}
+    {% for item in attributes_proper %}
+        ~{{ name }}.{{ item }}
+    {%- endfor %}
+    {% endif %}
+    {% if attributes_inherited %}
+    .. rubric:: Inherited Attributes
+    .. autosummary::
+    {% for item in attributes_inherited %}
         ~{{ name }}.{{ item }}
     {%- endfor %}
     {% endif %}
     {% endblock %}
 
-    {% block methods_proper %}
+    {% block methods %}
     {% if methods_proper %}
     .. rubric:: Methods
-
     .. autosummary::
         :toctree:
-
+        :nosignatures:
     {% for item in methods_proper %}
         ~{{ name }}.{{ item }}
     {%- endfor %}
     {% endif %}
-    {% endblock %}
 
-    {% block methods_inherited %}
     {% if methods_inherited %}
     .. rubric:: Inherited Methods
-
     .. autosummary::
         :toctree:
-
+        :nosignatures:
     {% for item in methods_inherited %}
         ~{{ name }}.{{ item }}
     {%- endfor %}
