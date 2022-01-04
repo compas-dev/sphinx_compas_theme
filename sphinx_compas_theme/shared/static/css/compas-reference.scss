@@ -33,8 +33,8 @@
 
 .admonition {
 	padding: $alert-padding-y $alert-padding-x;
-	margin-top: 2rem;
-	margin-bottom: 2rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 	border: $alert-border-width solid transparent;
 	// @include border-radius($alert-border-radius);
 }
@@ -90,8 +90,8 @@ table {
 .longtable {
 	border: none;
 	width: 100%;
-	margin-top: 2rem;
-	margin-bottom: 2rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 	vertical-align: middle;
 }
 
@@ -99,10 +99,6 @@ table {
 	padding: 0.5rem;
 	border: 1px solid #eee;
 }
-
-// .longtable .row-odd {}
-
-// .longtable .row-even {}
 
 @media (min-width: 768px) {
 	.longtable tbody tr td:first-child {
@@ -124,17 +120,10 @@ table {
 	margin: 0;
 }
 
-// .function {}
+// start of signature
+// ------------------
 
-// .class {}
-
-// .method {}
-
-.staticmethod > dt,
-.classmethod > dt,
-.method > dt,
-.function > dt,
-.class > dt {
+.sig {
 	padding: 0.5rem;
 	margin-bottom: 0.5rem;
 	margin-left: -0.5rem;
@@ -144,63 +133,56 @@ table {
 	font-weight: normal;
 }
 
-// .staticmethod > dt em,
-// .classmethod > dt em,
-// .method > dt em,
-// .function > dt em,
-// .class > dt em {
-// }
-
-.staticmethod > dt > code,
-.classmethod > dt > code,
-.method > dt > code,
-.function > dt > code,
-.class > dt > code {
+.sig code {
 	background-color: #eee;
 	font-weight: bold;
 }
 
-// .class .property {}
+.sig .property {
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	background-color: #fff;
+}
 
-.descclassname {
+.sig-prename {
+	font-weight: normal;
 	border-radius: 0;
 	padding-right: 0;
 }
 
-.descname {
+.sig-name {
+	font-weight: bold;
 	padding-left: 0;
 	border-radius: 0;
 }
 
-// .staticmethod > dd > p,
-// .classmethod > dd > p,
-// .method > dd > p,
-// .function > dt,
-// .class > dd > p {
-// }
-
-.compas-content .section {
-	position: relative;
+.sig-param .n {
+	text-decoration: underline;
 }
 
-.staticmethod > dt > .reference.internal,
-.classmethod > dt > .reference.internal,
-.method > dt > .reference.internal,
-.function > dt > .reference.internal,
-.class > dt > .reference.internal {
-	// position: absolute;
-	// top: 0;
-	// right: 0;
+// .compas-content .section {
+// 	position: relative;
+// }
+
+.sig .reference.internal {
 	float: right;
 }
 
+// ----------------
+// end of signature
+
+// start of parameters, attributes, ...
+// ------------------------------------
+
 .field-list {
-	margin-top: 0rem;
-	margin-bottom: 1rem;
+	// display: grid;
+	// grid-template-columns: fit-content(30%) auto;
+	// grid-gap: 1rem;
+	margin: 1rem 0 1rem 0;
 }
 
 .field-list dt {
-	margin-top: 2rem;
+	margin-top: 1rem;
 	margin-bottom: 1rem;
 }
 
@@ -208,15 +190,43 @@ table {
 	padding: 0 2rem;
 }
 
-.field-list dd > ul {
+.field-list p {
+	margin: 0;
+}
+
+.field-list li {
+	margin: 0;
+}
+
+.field-list ul {
 	padding-left: 0;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+// ----------------------------------
+// end of parameters, attributes, ...
+
+// start of reference section
+// --------------------------
+
+.footnote,
+.citation {
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-gap: 1rem;
+	margin: 1rem 0;
 }
 
 .footnote dt,
-.citation dt {
+.footnote dd,
+.footnote dd p,
+.citation dt,
+.citation dd,
+.citation dd p {
 	font-weight: normal;
-	margin-top: 1rem;
-	margin-bottom: 0.5rem;
+	margin: 0;
+	padding: 0;
 }
 
 dt .brackets::before {
@@ -227,10 +237,11 @@ dt .brackets::after {
 	content: ']';
 }
 
-.footnote dd, 
-.citation dd {
-	padding: 0 2rem;
-}
+// ------------------------
+// end of reference section
+
+// start of inheritance diagrams
+// -----------------------------
 
 .graphviz {
 	text-align: center !important;
@@ -243,8 +254,5 @@ dt .brackets::after {
 	height: auto;
 }
 
-/* ----------------------------------------------------------------- */
-
-// .search-results {
-
-// }
+// ---------------------------
+// end of inheritance diagrams
