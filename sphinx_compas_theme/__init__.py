@@ -15,10 +15,10 @@ def get_autosummary_templates_path():
     return [templates_path]
 
 
-def get_directives_path():
+def get_extensions_path():
     theme_path = get_html_theme_path()[0]
-    directives_path = os.path.join(theme_path, 'directives')
-    return [directives_path]
+    extensions_path = os.path.join(theme_path, 'extensions')
+    return [extensions_path]
 
 
 def get_html_static_path():
