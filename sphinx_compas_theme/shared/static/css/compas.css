@@ -360,6 +360,10 @@ background-color: #f0f0f0;
 text-decoration: none;
 }
 
+.field-list em {
+  font-style: normal;
+}
+
 /* Footer */
 
 .compas-footer {
