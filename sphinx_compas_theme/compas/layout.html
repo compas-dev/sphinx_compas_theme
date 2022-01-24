@@ -144,19 +144,17 @@
         {% if toctree %}
         <div id="compas-navigation" class="collapse compas-navigation">
           {{ toctree
-              | replace("<ul>", "<ul class=\"nav flex-column\">")
-              | replace("<ul class=\"current\">", "<ul class=\"nav flex-column active\">")
-              | replace("<li class=\"toctree-l1\">", "<li class=\"nav-item\">")
-              | replace("<li class=\"toctree-l1 current\">", "<li class=\"nav-item active\">")
-              | replace("class=\"reference internal\"", "class=\"nav-link reference internal\"")
-              | replace("class=\"current reference internal\"", "class=\"nav-link active current reference internal\"")
-              | replace("<li class=\"toctree-l2\">", "<li class=\"nav-item\">")
-              | replace("<li class=\"toctree-l2 current\">", "<li class=\"nav-item active\">")
-              | replace("<li class=\"toctree-l3\">", "<li class=\"nav-item\">")
-              | replace("<li class=\"toctree-l3 current\">", "<li class=\"nav-item active\">")
-              | replace("class=\"reference internal\"", "class=\"nav-link reference internal\"")
-              | replace("class=\"current reference internal\"", "class=\"nav-link active current reference internal\"") }}
-        </div>
+            | replace('<ul>', '<ul class="nav flex-column collapse">')
+            | replace('<ul class="current">', '<ul class="nav flex-column collapse show active">')
+            | replace('<li class="toctree-l1">', '<li class="toctree-l1 nav-item">')
+            | replace('<li class="toctree-l1 current">', '<li class="toctree-l1 nav-item active">')
+            | replace('<li class="toctree-l2">', '<li class="toctree-l2 nav-item">')
+            | replace('<li class="toctree-l2 current">', '<li class="toctree-l2 nav-item active">')
+            | replace('<li class="toctree-l3">', '<li class="toctree-l3 nav-item">')
+            | replace('<li class="toctree-l3 current">', '<li class="toctree-l3 nav-item active">')
+            | replace('class="reference internal"', 'class="nav-link reference internal"')
+            | replace('class="current reference internal"', 'class="nav-link active reference internal"') }}
+          </div>
         {% else %}
         {{ toc }}
         {% endif %}
@@ -276,11 +274,35 @@
       hljs.initHighlighting();
       anchors.add();
 
-      new ClipboardJS('.btn', {
+      new ClipboardJS('.btn.copy', {
         target: function(trigger) {
           return trigger.nextElementSibling;
         }
       });
+
+      $("#compas-navigation li.active > ul").each(function() {
+        var ul = $(this);
+        if (! ul.hasClass("show")) {
+          ul.addClass("show");
+        }
+      });
+
+      $("#compas-navigation li.toctree-l1").has("ul").each(function() {
+        var li = $(this);
+        li.addClass("has-children");
+        if (li.hasClass("active")) {
+          li.prepend('<span class="menu-toggle"><i class="fas fa-chevron-up"></i></span>');
+        }
+        else {
+          li.prepend('<span class="menu-toggle"><i class="fas fa-chevron-down"></i></span>');
+        }
+      });
+
+      $(".menu-toggle").click(function() {
+        var toggle = $(this);
+        toggle.siblings("ul").toggleClass("show");
+      });
+
     });
 
     var url = $("#doc_versions").data("url");
