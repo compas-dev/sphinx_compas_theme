@@ -1,5 +1,5 @@
 import os
-
+import sys
 
 __version__ = '0.15.17'
 
@@ -17,8 +17,8 @@ def get_autosummary_templates_path():
 
 def get_extensions_path():
     theme_path = get_html_theme_path()[0]
-    extensions_path = os.path.join(theme_path, 'extensions')
-    return [extensions_path]
+    extensions_path = os.path.join(theme_path, 'ext')
+    return extensions_path
 
 
 def get_html_static_path():
@@ -33,3 +33,6 @@ def setup(app):
 
         app.add_html_theme('compas', os.path.join(theme_path, 'compas'))
         app.add_html_theme('compaspkg', os.path.join(theme_path, 'compaspkg'))
+
+
+sys.path.append(get_extensions_path())
