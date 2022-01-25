@@ -1,7 +1,7 @@
 import os
 
 
-__version__ = '0.15.15'
+__version__ = '0.15.16'
 
 
 def get_html_theme_path():
